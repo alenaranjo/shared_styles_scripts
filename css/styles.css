@@ -1,0 +1,469 @@
+:root {
+    /* Base for dark mode */
+    --primary-blue: #3db1ff;
+    --gitlink-bg: #19415c;
+    --dark-background: #15151c;
+    --text-light: #fff;
+    --text-secondary: #a0a0a0;
+    --card-background: rgba(33, 33, 48, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --accent-turquesa: #00ffff;
+    --body-bg-gradient: linear-gradient(135deg, var(--dark-background) 0%, #0f0f1c 100%);
+    --ad-unit-h3-bg: rgba(0, 0, 0, 0.3);
+    --ad-unit-h3-color-main: var(--text-light);
+    --ad-unit-h3-color-accent: var(--accent-turquesa);
+
+    --glass-blur: 10px;
+
+    /* Button colors - keeping them somewhat distinct from overall theme for now */
+    --button-gradient-start: #25c09e;
+    --button-gradient-end: #108aa8;
+    --button-hover-gradient-start: #17ffcd;
+    --button-hover-gradient-end: #16d4ab;
+    --button-text-shadow-default: rgba(0, 0, 0, 0.2);
+    --button-text-shadow-hover: rgba(4, 70, 64, 0.6);
+    --button-box-shadow-default: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --button-box-shadow-hover: 0 0px 15px rgba(0, 225, 255, 0.9);
+    --button-border-radius: 20px;
+    --linkbox-hover-shadow: 0 6px 15px rgba(4, 217, 255, 0.6);
+
+    /* Theme Switch Specific Colors - Default to dark mode visuals */
+    --switch-track-bg: #353b4e;
+    --switch-button-bg: #25283a;
+    --switch-text-color-light: #f0f0f0;
+    --switch-text-color-dark: #a0e9ff;
+
+    --switch-track-shadow-inset: inset 0 2px 5px rgba(0, 0, 0, 0.4);
+    --switch-track-shadow-outset: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Light Mode Override */
+body.light-mode {
+    --primary-blue: #4473a5;
+    --gitlink-bg: #5d6b85;
+    --dark-background: #f0f2f5;
+    --text-light: #434864;
+    --text-secondary: #666;
+    --card-background: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --glass-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --accent-turquesa: #008080;
+    --body-bg-gradient: linear-gradient(135deg, var(--dark-background) 0%, #e0e0e0 100%);
+    --ad-unit-h3-bg: rgba(232, 234, 235, 0.6);
+    --ad-unit-h3-color-main: #333;
+    --ad-unit-h3-color-accent: #0056b3;
+
+    /* Button colors can also shift or stay the same based on preference */
+    --button-gradient-start: #7beed1;
+    --button-gradient-end: #68c4c7;
+    --button-hover-gradient-start: #2ef0e0;
+    --button-hover-gradient-end: #2ef0e0;
+    --button-text-shadow-hover: rgba(0, 0, 0, 0.2);
+    --button-box-shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.2);
+    --linkbox-hover-shadow: 0 6px 15px rgba(34, 42, 58, 0.5);
+
+    /* Theme Switch Specific Colors - for Light Mode visuals */
+    --switch-track-bg: #e0e0e0;
+    --switch-button-bg: #f0f0f0;
+    --switch-text-color-light: #6e6e6e;
+    --switch-text-color-dark: #6e6e6e;
+
+    --switch-track-shadow-inset: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    --switch-track-shadow-outset: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    background: var(--body-bg-gradient);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #4da6ff;
+}
+
+#date {
+    position: relative;
+    display: inline-block;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    transition: color 0.5s ease;
+}
+
+.header {
+    width: 90%;
+    padding: 50px 20px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-box-shadow);
+    margin-top: 40px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.header h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-light);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+    transition: color 0.5s ease;
+}
+
+.header p.description {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 15px auto 0;
+    line-height: 1.6;
+    transition: color 0.5s ease;
+}
+
+.gitlink {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.gitlink a {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-blue);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.gitlink a:hover {
+    background-color: var(--gitlink-bg);
+    color: #fff;
+}
+
+h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--primary-blue);
+    /*text-transform: uppercase;*/
+    letter-spacing: 0.5px;
+    transition: color 0.5s ease;
+}
+
+h3 span {
+    color: var(--text-light);
+    font-size: 1em;
+    font-weight: 400;
+    display: block;
+    margin-top: 5px;
+    opacity: 0.8;
+    transition: color 0.5s ease;
+}
+
+h5 {
+    margin-top: 20px;
+    padding: 0;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    font-weight: 300;
+    transition: color 0.5s ease;
+}
+
+.linkbox {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-box-shadow);
+    padding: 15px 25px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: auto;
+    max-width: 90%;
+    transition: transform 0.2s ease, box-shadow 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.linkbox:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--linkbox-hover-shadow);
+}
+
+.linkbox a {
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 1.1em;
+    white-space: nowrap;
+    transition: color 0.5s ease;
+}
+
+.ad-unit-container {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-box-shadow);
+    padding: 20px;
+    margin: 20px auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.ad-unit-container h3 {
+    margin: 10px 0 20px 0;
+    padding: 10px 15px;
+    background-color: var(--ad-unit-h3-bg);
+    border-radius: 5px;
+    color: var(--ad-unit-h3-color-main);
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    width: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.ad-unit-container h3 span:first-child {
+    color: var(--ad-unit-h3-color-main);
+    font-weight: bold;
+    margin-right: 5px;
+    transition: color 0.5s ease;
+}
+
+.ad-unit-container h3 span:last-child {
+    color: var(--ad-unit-h3-color-accent);
+    font-weight: bold;
+    margin-left: 5px;
+    transition: color 0.5s ease;
+}
+
+iframe {
+    border: none;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+}
+
+button.load {
+    background: linear-gradient(to bottom, var(--button-gradient-start) 5%, var(--button-gradient-end) 100%);
+    border: none;
+    border-radius: var(--button-border-radius);
+    box-shadow: var(--button-box-shadow-default);
+    color: var(--text-light);
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    margin-top: 20px;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 var(--button-text-shadow-default);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, letter-spacing 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+}
+
+button.load:hover {
+    background: linear-gradient(to bottom, var(--button-hover-gradient-start) 15%, var(--button-hover-gradient-end) 100%);
+    transform: translateY(-2px);
+    letter-spacing: 1.8px;
+    text-shadow: 0 0 1px var(--button-text-shadow-hover);
+    box-shadow: var(--button-box-shadow-hover);
+}
+
+button.load:active {
+    transform: translateY(0);
+    box-shadow: var(--button-box-shadow-default);
+}
+
+.divider {
+    display: block;
+    width: 80%;
+    height: 2px;
+    margin: 50px auto 25px auto;
+    background-color: var(--glass-border);
+    border-radius: 1px;
+    transition: background-color 0.5s ease;
+}
+
+.spacer {
+    display: block;
+    width: 100%;
+    height: 20px;
+}
+
+.unit_links {
+    width: 50%;
+    height: 50%;
+}
+
+/* Dark/Light Mode Switch Styling */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /*width: 40%;*/
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.theme-switch {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    /* Made button wider */
+    height: 40px;
+    /* Made button taller */
+    background-color: var(--switch-track-bg);
+    border-radius: 25px;
+    /* Adjust border-radius for new height */
+    position: relative;
+    cursor: pointer;
+    box-shadow: var(--switch-track-shadow-inset), var(--switch-track-shadow-outset);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.theme-switch .slider {
+    position: absolute;
+    height: 39px;
+    /* Adjust slider height */
+    width: 105px;
+    /* Adjust slider width */
+    border-radius: 30px;
+    background-color: var(--switch-button-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    left: 3px;
+    transform: translateX(90px);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+input:checked+.slider {
+    transform: translateX(0);
+    /* Move to left for light mode */
+}
+
+/* Labels for light and dark mode */
+.theme-switch .mode-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    /* Increased font size */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    gap: 8px;
+    /* Increased gap between text and icon */
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.theme-switch .mode-label .fas {
+    font-size: 1.2em;
+    /* Increased icon size */
+}
+
+.theme-switch .light-mode-label {
+    left: 15px;
+    color: var(--switch-text-color-light);
+}
+
+.theme-switch .dark-mode-label {
+    right: 15px;
+    color: var(--switch-text-color-dark);
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.2em;
+    }
+
+    .header p.description {
+        font-size: 0.9em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    .linkbox {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    .ad-unit-container {
+        padding: 15px;
+    }
+
+    .theme-switch-wrapper {
+        top: 50%;
+        right: 10px;
+        justify-content: flex-end;
+        width: auto;
+    }
+
+    .theme-switch {
+        width: 220px;
+        height: 45px;
+    }
+
+    .theme-switch .slider {
+        height: 39px;
+        width: 105px;
+        transform: translateX(105px);
+    }
+
+    .theme-switch .mode-label {
+        font-size: 0.9em;
+        gap: 5px;
+    }
+
+    .theme-switch .mode-label .fas {
+        font-size: 1em;
+    }
+}
