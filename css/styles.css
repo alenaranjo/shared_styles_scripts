@@ -13,6 +13,7 @@
     --ad-unit-h3-bg: rgba(0, 0, 0, 0.3);
     --ad-unit-h3-color-main: var(--text-light);
     --ad-unit-h3-color-accent: var(--accent-turquesa);
+
     --glass-blur: 10px;
 
     /* Button colors - keeping them somewhat distinct from overall theme for now */
@@ -329,6 +330,11 @@ button.load:active {
 }
 
 .unit_links {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 30px;
     width: 50%;
     height: 50%;
 }
